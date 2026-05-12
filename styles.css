@@ -281,28 +281,116 @@ h3 {
   max-width: 760px;
 }
 
-.service-grid {
+.service-carousel {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 18px;
+}
+
+.service-carousel-viewport {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.service-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.service-track {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
 }
 
 .service-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+  min-height: 420px;
   overflow: hidden;
   background: var(--surface);
   border: 1px solid rgba(24, 33, 31, 0.08);
   border-radius: 8px;
   box-shadow: 0 18px 42px rgba(50, 64, 59, 0.08);
+  scroll-snap-align: start;
 }
 
 .service-card img {
-  height: 260px;
+  height: 100%;
+  min-height: 420px;
   object-fit: cover;
   background: var(--blue);
 }
 
 .service-card div {
-  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 5vw, 54px);
+}
+
+.service-card h3 {
+  font-size: clamp(28px, 4vw, 46px);
+}
+
+.service-card p {
+  font-size: 18px;
+}
+
+.service-carousel-controls,
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-carousel-controls {
+  gap: 18px;
+}
+
+.carousel-button,
+.carousel-dot {
+  border: 0;
+  cursor: pointer;
+}
+
+.carousel-button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 34px;
+  line-height: 1;
+  box-shadow: 0 12px 26px rgba(50, 64, 59, 0.08);
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-button:hover {
+  color: var(--sage-dark);
+  border-color: rgba(49, 95, 80, 0.38);
+  transform: translateY(-1px);
+}
+
+.carousel-dots {
+  gap: 10px;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  background: #becbc4;
+  border-radius: 50%;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-dot.is-active {
+  background: var(--sage-dark);
+  transform: scale(1.25);
 }
 
 .service-card p,
@@ -543,12 +631,21 @@ address {
   }
 
   .quick-strip,
-  .service-grid,
   .pricing-grid,
   .care-band,
   .booking-panel,
   .section-heading {
     grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .service-card img {
+    height: 340px;
+    min-height: 0;
   }
 
   .care-steps {
@@ -607,13 +704,25 @@ address {
     padding-right: 18px;
   }
 
+  .care-steps,
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+
   .service-card img {
     height: 220px;
   }
 
-  .care-steps,
-  .booking-form {
-    grid-template-columns: 1fr;
+  .service-card div {
+    padding: 24px;
+  }
+
+  .service-card p {
+    font-size: 16px;
+  }
+
+  .service-carousel-controls {
+    justify-content: space-between;
   }
 
   .booking-panel {

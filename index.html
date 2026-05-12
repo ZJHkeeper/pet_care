@@ -113,39 +113,57 @@
           </p>
         </div>
 
-        <div class="service-grid">
-          <article class="service-card">
-            <img
-              src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=900&q=80"
-              alt="正在户外看向镜头的浅色小狗"
-            />
-            <div>
-              <h3>基础沐浴</h3>
-              <p>温和清洁、吹干梳理、耳道清洁、脚底毛修整，适合每月日常护理。</p>
-            </div>
-          </article>
+        <div class="service-carousel" aria-label="常用洗护项目轮播">
+          <div class="service-carousel-viewport">
+            <div class="service-track">
+              <article class="service-card">
+                <img
+                  src="./assets/services/basic-bath.png"
+                  alt="美容师在明亮洗护区为小型犬进行基础沐浴"
+                />
+                <div>
+                  <h3>基础沐浴</h3>
+                  <p>温和清洁、吹干梳理、耳道清洁、脚底毛修整，适合每月日常护理。</p>
+                </div>
+              </article>
 
-          <article class="service-card">
-            <img
-              src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=80"
-              alt="近距离看向镜头的猫咪"
-            />
-            <div>
-              <h3>猫咪低压护理</h3>
-              <p>安静预约时段、低噪吹风、分段安抚，减少猫咪在陌生环境中的压力。</p>
-            </div>
-          </article>
+              <article class="service-card">
+                <img
+                  src="./assets/services/cat-low-stress-care.png"
+                  alt="猫咪在安静护理台上接受低压梳理护理"
+                />
+                <div>
+                  <h3>猫咪低压护理</h3>
+                  <p>安静预约时段、低噪吹风、分段安抚，减少猫咪在陌生环境中的压力。</p>
+                </div>
+              </article>
 
-          <article class="service-card">
-            <img
-              src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=80"
-              alt="穿着黄色衣服的小狗坐在室内"
-            />
-            <div>
-              <h3>精修造型</h3>
-              <p>按犬种、体型和家长偏好修剪线条，包含面部、四肢、尾部与整体比例调整。</p>
+              <article class="service-card">
+                <img
+                  src="./assets/services/styling-trim.png"
+                  alt="美容师在护理台前为小型犬进行精修造型"
+                />
+                <div>
+                  <h3>精修造型</h3>
+                  <p>按犬种、体型和家长偏好修剪线条，包含面部、四肢、尾部与整体比例调整。</p>
+                </div>
+              </article>
             </div>
-          </article>
+          </div>
+
+          <div class="service-carousel-controls" aria-label="轮播控制">
+            <button class="carousel-button" type="button" data-carousel="prev" aria-label="上一项">
+              ‹
+            </button>
+            <div class="carousel-dots" aria-label="选择服务项目">
+              <button class="carousel-dot is-active" type="button" data-slide="0" aria-label="查看基础沐浴"></button>
+              <button class="carousel-dot" type="button" data-slide="1" aria-label="查看猫咪低压护理"></button>
+              <button class="carousel-dot" type="button" data-slide="2" aria-label="查看精修造型"></button>
+            </div>
+            <button class="carousel-button" type="button" data-carousel="next" aria-label="下一项">
+              ›
+            </button>
+          </div>
         </div>
       </section>
 
@@ -221,5 +239,51 @@
       <span>Paw Bloom 宠物洗护</span>
       <span>用更安静的方式，照顾每一只小伙伴。</span>
     </footer>
+    <script>
+      const carousel = document.querySelector(".service-carousel");
+
+      if (carousel) {
+        const viewport = carousel.querySelector(".service-carousel-viewport");
+        const cards = [...carousel.querySelectorAll(".service-card")];
+        const dots = [...carousel.querySelectorAll(".carousel-dot")];
+        const prevButton = carousel.querySelector('[data-carousel="prev"]');
+        const nextButton = carousel.querySelector('[data-carousel="next"]');
+
+        const setActiveDot = () => {
+          const activeIndex = Math.round(viewport.scrollLeft / viewport.clientWidth);
+
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("is-active", index === activeIndex);
+            dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+          });
+        };
+
+        const goToSlide = (index) => {
+          const normalizedIndex = (index + cards.length) % cards.length;
+          viewport.scrollTo({
+            left: normalizedIndex * viewport.clientWidth,
+            behavior: "smooth",
+          });
+        };
+
+        prevButton.addEventListener("click", () => {
+          goToSlide(Math.round(viewport.scrollLeft / viewport.clientWidth) - 1);
+        });
+
+        nextButton.addEventListener("click", () => {
+          goToSlide(Math.round(viewport.scrollLeft / viewport.clientWidth) + 1);
+        });
+
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            goToSlide(Number(dot.dataset.slide));
+          });
+        });
+
+        viewport.addEventListener("scroll", setActiveDot, { passive: true });
+        window.addEventListener("resize", setActiveDot);
+        setActiveDot();
+      }
+    </script>
   </body>
 </html>

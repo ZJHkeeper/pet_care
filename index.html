@@ -31,15 +31,61 @@
         <div class="hero-media" aria-hidden="true"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <p class="eyebrow">城市宠物洗护与造型工作室</p>
-          <h1 id="hero-title">Paw Bloom 宠物洗护</h1>
-          <p class="hero-copy">
-            给猫犬一个安静、干净、有耐心的护理空间。从基础洗护到精修造型，每一次服务都围绕宠物的舒适感展开。
-          </p>
-          <div class="hero-actions" aria-label="快速操作">
-            <a class="button button-primary" href="#booking">立即预约</a>
-            <a class="button button-secondary" href="#pricing">查看价目</a>
+          <div class="hero-main">
+            <p class="eyebrow">城市宠物洗护与造型工作室</p>
+            <h1 id="hero-title">Paw Bloom 宠物洗护</h1>
+            <p class="hero-copy">
+              给猫狗一个安静、干净、有耐心的护理空间。从基础洗护到精修造型，每一次服务都围绕宠物的舒适感展开。
+            </p>
+            <div class="hero-actions" aria-label="快速操作">
+              <a class="button button-primary" href="#booking">立即预约</a>
+              <a class="button button-secondary" href="#pricing">查看价目</a>
+            </div>
           </div>
+
+          <aside class="booking-panel hero-booking" id="booking" aria-labelledby="booking-title">
+            <div>
+              <p class="eyebrow">Book A Visit</p>
+              <h2 id="booking-title">预约到店</h2>
+              <p>
+                营业时间 10:00-20:00。提交后门店会在 30 分钟内联系确认时间、宠物状态和服务项目。
+              </p>
+              <address>
+                上海市梧桐路 118 号 1F<br />
+                距离地铁 8 号线步行 6 分钟
+              </address>
+            </div>
+
+            <form class="booking-form">
+              <label>
+                家长姓名
+                <input type="text" name="name" placeholder="例如：陈女士" />
+              </label>
+              <label>
+                联系电话
+                <input type="tel" name="phone" placeholder="请输入手机号" />
+              </label>
+              <label>
+                宠物类型
+                <select name="pet">
+                  <option>小型犬</option>
+                  <option>中大型犬</option>
+                  <option>猫咪</option>
+                  <option>其他宠物</option>
+                </select>
+              </label>
+              <label>
+                想预约的服务
+                <select name="service">
+                  <option>基础沐浴</option>
+                  <option>全套造型</option>
+                  <option>猫咪护理</option>
+                  <option>皮肤护理 SPA</option>
+                </select>
+              </label>
+              <button class="button button-primary" type="button">提交预约</button>
+            </form>
+          </aside>
         </div>
       </section>
 
@@ -167,52 +213,6 @@
             <p>包含基础清洁、梳毛、指甲与低压吹干。</p>
             <a href="#booking">预约此项</a>
           </article>
-        </div>
-      </section>
-
-      <section class="booking" id="booking" aria-labelledby="booking-title">
-        <div class="booking-panel">
-          <div>
-            <p class="eyebrow">Book A Visit</p>
-            <h2 id="booking-title">预约到店</h2>
-            <p>
-              营业时间 10:00-20:00。提交后门店会在 30 分钟内联系确认时间、宠物状态和服务项目。
-            </p>
-            <address>
-              上海市梧桐路 118 号 1F<br />
-              距离地铁 8 号线步行 6 分钟
-            </address>
-          </div>
-
-          <form class="booking-form">
-            <label>
-              家长姓名
-              <input type="text" name="name" placeholder="例如：陈女士" />
-            </label>
-            <label>
-              联系电话
-              <input type="tel" name="phone" placeholder="请输入手机号" />
-            </label>
-            <label>
-              宠物类型
-              <select name="pet">
-                <option>小型犬</option>
-                <option>中大型犬</option>
-                <option>猫咪</option>
-                <option>其他宠物</option>
-              </select>
-            </label>
-            <label>
-              想预约的服务
-              <select name="service">
-                <option>基础沐浴</option>
-                <option>全套造型</option>
-                <option>猫咪护理</option>
-                <option>皮肤护理 SPA</option>
-              </select>
-            </label>
-            <button class="button button-primary" type="button">提交预约</button>
-          </form>
         </div>
       </section>
     </main>

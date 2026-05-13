@@ -19,10 +19,12 @@ node_modules/
 dist/
 build/
 .cache/
+.next/
 
 # Environment files
 .env
 .env.*
+!.env.example
 
 # Local screenshots or exports
 screenshots/

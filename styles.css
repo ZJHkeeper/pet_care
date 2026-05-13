@@ -664,6 +664,33 @@ address {
   min-height: 52px;
 }
 
+.booking-form .button:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
+.booking-form-wide,
+.booking-message {
+  grid-column: 1 / -1;
+}
+
+.booking-message {
+  min-height: 24px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.booking-message.success {
+  color: var(--sage-dark);
+}
+
+.booking-message.error {
+  color: #b83b30;
+}
+
 .site-footer {
   color: rgba(255, 255, 255, 0.74);
   background: var(--ink);

@@ -293,7 +293,8 @@ h3 {
   scrollbar-width: none;
 }
 
-.service-carousel-viewport::-webkit-scrollbar {
+.service-carousel-viewport::-webkit-scrollbar,
+.review-carousel-viewport::-webkit-scrollbar {
   display: none;
 }
 
@@ -394,6 +395,8 @@ h3 {
 }
 
 .service-card p,
+.review-card p,
+.review-meta span,
 .price-card p,
 .care-copy p,
 .care-steps p,
@@ -502,6 +505,74 @@ address {
 
 .featured a {
   color: #fff;
+}
+
+.reviews-section {
+  background: #f2f7f4;
+}
+
+.review-carousel {
+  display: grid;
+  gap: 18px;
+}
+
+.review-carousel-viewport {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.review-track {
+  display: grid;
+  grid-auto-columns: 100%;
+  grid-auto-flow: column;
+}
+
+.review-card {
+  min-height: 280px;
+  padding: clamp(28px, 5vw, 52px);
+  background: #fff;
+  border: 1px solid rgba(49, 95, 80, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 18px 42px rgba(50, 64, 59, 0.08);
+  scroll-snap-align: start;
+}
+
+.review-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.review-avatar {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  color: #fff;
+  background: var(--sage-dark);
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.review-meta h3 {
+  margin-bottom: 4px;
+}
+
+.review-meta span {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.review-card p {
+  max-width: 900px;
+  margin-bottom: 0;
+  font-size: clamp(20px, 3vw, 32px);
+  line-height: 1.45;
 }
 
 .booking-panel {
@@ -723,6 +794,18 @@ address {
 
   .service-carousel-controls {
     justify-content: space-between;
+  }
+
+  .review-card {
+    min-height: 300px;
+  }
+
+  .review-meta {
+    align-items: flex-start;
+  }
+
+  .review-card p {
+    font-size: 18px;
   }
 
   .booking-panel {

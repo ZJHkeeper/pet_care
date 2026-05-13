@@ -233,6 +233,73 @@
           </article>
         </div>
       </section>
+
+      <section class="section reviews-section" aria-labelledby="reviews-title">
+        <div class="section-heading compact">
+          <p class="eyebrow">Customer Reviews</p>
+          <h2 id="reviews-title">用户评价</h2>
+          <p>来自近期到店家长的反馈摘录，帮助你更快判断这里是否适合自家的小朋友。</p>
+        </div>
+
+        <div class="review-carousel js-carousel" aria-label="用户评价轮播">
+          <div class="review-carousel-viewport carousel-viewport">
+            <div class="review-track">
+              <article class="review-card">
+                <div class="review-meta">
+                  <span class="review-avatar" aria-hidden="true">陈</span>
+                  <div>
+                    <h3>陈女士和豆包</h3>
+                    <span>小型犬洗护</span>
+                  </div>
+                </div>
+                <p>
+                  豆包第一次到店有点紧张，护理师会先陪它熟悉环境，洗完毛很蓬松，耳朵和脚底也处理得很细。
+                </p>
+              </article>
+
+              <article class="review-card">
+                <div class="review-meta">
+                  <span class="review-avatar" aria-hidden="true">周</span>
+                  <div>
+                    <h3>周先生和奶盖</h3>
+                    <span>猫咪低压护理</span>
+                  </div>
+                </div>
+                <p>
+                  家里的猫很怕吹风，这次分段护理明显轻松很多。结束后还会说明毛结位置和在家梳毛频率，很专业。
+                </p>
+              </article>
+
+              <article class="review-card">
+                <div class="review-meta">
+                  <span class="review-avatar" aria-hidden="true">林</span>
+                  <div>
+                    <h3>林小姐和糯米</h3>
+                    <span>全套造型</span>
+                  </div>
+                </div>
+                <p>
+                  造型前沟通得很仔细，会根据狗狗脸型调整长度。接回来的时候状态很好，照片也比平时上镜。
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <div class="service-carousel-controls" aria-label="评价轮播控制">
+            <button class="carousel-button" type="button" data-carousel="prev" aria-label="上一条评价">
+              ‹
+            </button>
+            <div class="carousel-dots" aria-label="选择用户评价">
+              <button class="carousel-dot is-active" type="button" data-slide="0" aria-label="查看陈女士的评价"></button>
+              <button class="carousel-dot" type="button" data-slide="1" aria-label="查看周先生的评价"></button>
+              <button class="carousel-dot" type="button" data-slide="2" aria-label="查看林小姐的评价"></button>
+            </div>
+            <button class="carousel-button" type="button" data-carousel="next" aria-label="下一条评价">
+              ›
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -240,11 +307,9 @@
       <span>用更安静的方式，照顾每一只小伙伴。</span>
     </footer>
     <script>
-      const carousel = document.querySelector(".service-carousel");
-
-      if (carousel) {
-        const viewport = carousel.querySelector(".service-carousel-viewport");
-        const cards = [...carousel.querySelectorAll(".service-card")];
+      const setupCarousel = (carousel) => {
+        const viewport = carousel.querySelector(".carousel-viewport, .service-carousel-viewport");
+        const cards = [...carousel.querySelectorAll(".service-card, .review-card")];
         const dots = [...carousel.querySelectorAll(".carousel-dot")];
         const prevButton = carousel.querySelector('[data-carousel="prev"]');
         const nextButton = carousel.querySelector('[data-carousel="next"]');
@@ -283,7 +348,9 @@
         viewport.addEventListener("scroll", setActiveDot, { passive: true });
         window.addEventListener("resize", setActiveDot);
         setActiveDot();
-      }
+      };
+
+      document.querySelectorAll(".service-carousel, .js-carousel").forEach(setupCarousel);
     </script>
   </body>
 </html>

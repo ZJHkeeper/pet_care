@@ -665,15 +665,210 @@ address {
 }
 
 .site-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 28px clamp(20px, 6vw, 72px);
   color: rgba(255, 255, 255, 0.74);
   background: var(--ink);
 }
 
-.site-footer span:first-child {
+.footer-location {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(360px, 1fr);
+  gap: clamp(28px, 6vw, 76px);
+  align-items: center;
+  padding: clamp(62px, 9vw, 108px) clamp(20px, 6vw, 72px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-location-copy {
+  max-width: 560px;
+}
+
+.footer-location h2 {
+  color: #fff;
+}
+
+.footer-location-copy p:not(.eyebrow),
+.footer-location address,
+.map-card figcaption {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-location address {
+  margin-top: 18px;
+}
+
+.location-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.location-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  font-weight: 800;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.location-link:hover {
+  border-color: rgba(255, 255, 255, 0.68);
+  transform: translateY(-1px);
+}
+
+.location-link-primary {
+  background: var(--coral);
+  border-color: var(--coral);
+  box-shadow: 0 16px 34px rgba(239, 128, 111, 0.2);
+}
+
+.map-card {
+  margin: 0;
+}
+
+.map-visual {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--blue);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+}
+
+.map-visual img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-label,
+.map-route-note,
+.map-street {
+  position: absolute;
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.map-label,
+.map-route-note {
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(49, 95, 80, 0.14);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(24, 33, 31, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.map-label {
+  display: grid;
+  gap: 2px;
+  max-width: min(260px, 46%);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.map-label::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  bottom: -13px;
+  width: 16px;
+  height: 16px;
+  background: var(--coral);
+  border: 3px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 8px 16px rgba(24, 33, 31, 0.18);
+  transform: rotate(-45deg);
+}
+
+.map-label strong {
+  color: var(--sage-dark);
+  font-size: 14px;
+}
+
+.map-label span {
+  color: var(--muted);
+}
+
+.map-label-address {
+  right: 7%;
+  top: 15%;
+  max-width: min(290px, 48%);
+}
+
+.map-label-address::before {
+  background: var(--coral);
+}
+
+.map-label-bus-main {
+  left: 9%;
+  top: 14%;
+}
+
+.map-label-bus-main::before,
+.map-label-bus-nearby::before {
+  background: #3f87c5;
+}
+
+.map-label-bus-nearby {
+  left: 16%;
+  bottom: 20%;
+}
+
+.map-street {
+  padding: 4px 9px;
+  color: rgba(24, 33, 31, 0.78);
+  background: rgba(247, 242, 234, 0.82);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.map-street-qinglv {
+  right: 30%;
+  top: 48%;
+  transform: rotate(-10deg);
+}
+
+.map-street-coast {
+  left: 41%;
+  bottom: 17%;
+  transform: rotate(9deg);
+}
+
+.map-route-note {
+  left: 50%;
+  bottom: 7%;
+  max-width: min(330px, 44%);
+  color: var(--sage-dark);
+  font-size: 13px;
+  font-weight: 800;
+  transform: translateX(-34%);
+}
+
+.map-card img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.map-card figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px clamp(20px, 6vw, 72px);
+}
+
+.footer-bottom span:first-child {
   color: #fff;
   font-weight: 800;
 }
@@ -705,7 +900,8 @@ address {
   .pricing-grid,
   .care-band,
   .booking-panel,
-  .section-heading {
+  .section-heading,
+  .footer-location {
     grid-template-columns: 1fr;
   }
 
@@ -812,7 +1008,54 @@ address {
     padding: 24px;
   }
 
-  .site-footer {
+  .map-visual {
+    aspect-ratio: 4 / 5;
+  }
+
+  .map-label {
+    max-width: 78%;
+    font-size: 12px;
+  }
+
+  .map-label-address {
+    top: 7%;
+    right: 5%;
+  }
+
+  .map-label-bus-main {
+    left: 5%;
+    top: 35%;
+  }
+
+  .map-label-bus-nearby {
+    left: 8%;
+    bottom: 22%;
+  }
+
+  .map-street-qinglv {
+    right: 18%;
+    top: 55%;
+  }
+
+  .map-street-coast {
+    left: 48%;
+    bottom: 36%;
+  }
+
+  .map-route-note {
+    left: 5%;
+    right: 5%;
+    bottom: 6%;
+    max-width: none;
+    transform: none;
+  }
+
+  .location-actions,
+  .footer-bottom {
     flex-direction: column;
+  }
+
+  .location-link {
+    width: 100%;
   }
 }
